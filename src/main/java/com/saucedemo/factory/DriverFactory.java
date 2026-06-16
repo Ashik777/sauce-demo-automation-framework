@@ -32,4 +32,8 @@ public class DriverFactory {
 
         return driver;
     }
+    public static WebDriver getDriver()
+    {
+        return driver;
+    }
 }

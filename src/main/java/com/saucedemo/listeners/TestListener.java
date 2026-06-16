@@ -1,4 +1,5 @@
 package com.saucedemo.listeners;
+import com.saucedemo.utilities.ScreenshotUtil;
 
 import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
@@ -30,6 +31,13 @@ public class TestListener implements ITestListener {
     public void onTestFailure(ITestResult result) {
 
         test.fail("Test Failed");
+        String screenshotPath=ScreenshotUtil.captureScreenshot(result.getName());
+        try
+        {
+            test.addScreenCaptureFromPath(screenshotPath);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         test.fail(result.getThrowable());
     }
 
