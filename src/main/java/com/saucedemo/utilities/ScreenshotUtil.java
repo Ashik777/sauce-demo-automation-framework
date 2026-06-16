@@ -15,12 +15,12 @@ public static String captureScreenshot(String testName)
    WebDriver driver= DriverFactory.getDriver();
     TakesScreenshot ts =(TakesScreenshot) driver;
     File source=ts.getScreenshotAs(OutputType.FILE);
-    File folder= new File("Screenshots");
+    File folder= new File("test-output/screenshots");
     if(!folder.exists())
     {
-        folder.mkdir();
+        folder.mkdirs();
     }
-    String path="screenshot/" +testName+ ".png";
+    String path="test-output/screenshots/"+ testName + ".png";
     File destination = new File(path);
     try
     {
