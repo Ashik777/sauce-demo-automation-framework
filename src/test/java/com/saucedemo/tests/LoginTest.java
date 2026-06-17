@@ -1,12 +1,13 @@
 package com.saucedemo.tests;
 
+import com.saucedemo.listeners.RetryAnalyzer;
 import com.saucedemo.pages.LoginPage;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
 public class LoginTest extends BaseTest {
 
-    @Test
+    @Test(retryAnalyzer=RetryAnalyzer.class)
     public void verifyValidLogin()  {
 
         LoginPage loginPage = new LoginPage(driver);
@@ -15,7 +16,6 @@ public class LoginTest extends BaseTest {
         );
 
         Assert.assertEquals(
-                driver.getCurrentUrl(), "https://www.saucedemo.com/inventory.html"
-        );
+                driver.getCurrentUrl(), "https://www.saucedemo.com/inventory.html");
     }
 }
